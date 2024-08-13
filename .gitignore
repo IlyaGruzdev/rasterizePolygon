@@ -1,0 +1,14 @@
+*.out
+*.app
+*.lai
+*.la
+*.a
+*.lib
+.log
+*.tga
+*.o
+.vscode/
+.git
+*.json
+build/
+build/gg
