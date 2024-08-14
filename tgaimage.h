@@ -3,6 +3,8 @@
 
 #include <fstream>
 #include <vector>
+#include <opencv2/opencv.hpp>
+using namespace cv;
 
 #pragma pack(push,1)
 struct TGA_Header {
@@ -83,7 +85,7 @@ struct TGAColor {
 
 class TGAImage {
 protected:
-	unsigned char* data;
+	Mat img;
 	int width;
 	int height;
 	int bytespp;
@@ -95,7 +97,6 @@ public:
 		GRAYSCALE=1, RGB=3, RGBA=4
 	};
 
-	TGAImage();
 	TGAImage(int w, int h, int bpp);
 	TGAImage(const TGAImage &img);
 	bool read_tga_file(const char *filename);
@@ -105,7 +106,6 @@ public:
 	bool scale(int w, int h);
 	TGAColor get(int x, int y);
 	bool set(int x, int y, TGAColor c);
-	~TGAImage();
 	TGAImage & operator =(const TGAImage &img);
 	int get_width();
 	int get_height();
